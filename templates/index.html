@@ -1,0 +1,74 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.79.0">
+  <title>Gerenciamento de Alunos</title>
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'css\bootstrap.min.css' %}">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <h5 class="navbar-brand">Gerenciamento de Alunos</h5>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Pesquisa" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+      </form>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="bg-light p-4 rounded">
+      <div>
+        <!--Primeiro Card-->
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <div class="col">
+            <div class="card bg-warning">
+              <h5 class="card-header text-center">Dados do Aluno</h5>
+              <div class="card-body text-white">
+                <p class="card-text">Nome: {{ aluno.nome }}</p>
+                <p class="card-text">Data de Nascimento: {{ aluno.dtNascimento }}</p>
+                <p class="card-text">RG/RNE/RA: {{ aluno.rg }}</p>
+                <p class="card-text">Nome da Mãe: {{ aluno.nomeMae }}</p>
+                <p class="card-text">Nome do Pai: {{ aluno.nomePai }}</p>
+                <p class="card-text">Nível de Ensino: {{ aluno.nivelEnsino }}</p>
+                <p class="card-text">Ano de Conclusão: {{ aluno.anoConclusao }}</p>
+                <p class="card-text">Observações: {{ aluno.observacoes }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card bg-warning">
+              <h5 class="card-header text-center">Dados da Instituição</h5>
+              <div class="card-body text-white">
+                <p class="card-text">Nome da Instituição: {{ aluno.instituicao.nome }}</p>
+                <p class="card-text">Ato de Criação: {{ aluno.instituicao.atoDeInscricao }}</p>
+                <p class="card-text">Código INEP: {{ aluno.instituicao.codigoINEP }}</p>
+                <p class="card-text">Endereço: {{ aluno.instituicao.endereco }}</p>
+                <p class="card-text">Bairro: {{ aluno.instituicao.bairro }}</p>
+                <p class="card-text">Municipio: {{ aluno.instituicao.municipio }}</p>
+                <p class="card-text">CEP: {{ aluno.instituicao.cep }}</p>
+                <p class="card-text">Modalidades: {{ aluno.instituicao.modalidades }}</p>
+              </div>
+            </div>
+          </div>
+          <!--Fim Primeiro Card-->
+        </div>
+  </main>
+  <script src="{% static 'js\bootstrap.min.js' %}"></script>
+  <script src="{% static 'js\jquery-3.5.1.min.js' %}"></script>
+
+</body>
+
+</html>

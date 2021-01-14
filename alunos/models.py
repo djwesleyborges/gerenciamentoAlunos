@@ -1,4 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import post_save
 
 
 class Instituicao(models.Model):
@@ -16,7 +18,7 @@ class Instituicao(models.Model):
 
 
 class Aluno(models.Model):
-    username = models.CharField('Nome de Usuario', max_length=50)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nome = models.CharField('Nome do Aluno', max_length=50)
     dtNascimento = models.DateField('Data de Nascimento')
     rg = models.CharField('RG/RNE/RA', max_length=10)
@@ -29,3 +31,11 @@ class Aluno(models.Model):
 
     def __str__(self):
         return self.nome
+
+    # def create_aluno(sender, **kwargs):
+    #     user = kwargs["instance"]
+    #     if kwargs["created"]:
+    #         user_aluno = Aluno(user=user)
+    #         user_aluno.save()
+    #
+    # post_save.connect(create_aluno, sender=User)
